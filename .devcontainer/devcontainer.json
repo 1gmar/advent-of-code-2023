@@ -1,0 +1,14 @@
+{
+    "name": "Uiua",
+    "image": "mcr.microsoft.com/devcontainers/rust:1-1-bullseye",
+	"postCreateCommand": "cargo install uiua",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"uiua-lang.uiua-vscode",
+				"streetsidesoftware.code-spell-checker",
+				"mhutchie.git-graph"
+			]
+		}
+	}
+}
