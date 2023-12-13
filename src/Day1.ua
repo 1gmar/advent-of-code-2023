@@ -14,15 +14,16 @@ SmallDataTwo ← $ two1nine
 Digits ← ♭∵$"_"⇡10
 WDigits ← {"zero" "one" "two" "three" "four" "five" "six" "seven" "eight" "nine"}
 ReadLines ← ⊜□≠,@\n
-PartOne ← /+≡(⋕⊂⊓⊢(⊢⇌).▽∊,Digits °□) ReadLines
 ToDigits ← ≡(□◿10⊗ :Digits °□)
 SumFirstLast ← /+♭≡([+×10]⊓⊢(⊢⇌).▽≠0.°□)
+
+PartOne ← /+≡(⋕⊂⊓⊢(⊢⇌).▽∊,Digits °□) ReadLines
 AltPartOne ← SumFirstLast ToDigits ReadLines
 PartTwo ← SumFirstLast + ⊃(ToDigits|/+×⇡10⊞(□⌕ ∩°□) WDigits) ReadLines
 ---
-⍤"Failed for SmallData"=142 PartOne SmallData
+⍤"PartOne failed for SmallData"=142 PartOne SmallData
 ⍤"AltPartOne failed for SmallData"=142 AltPartOne SmallData
-⍤"Failed for BigData"=54667 PartOne BigData
+⍤"PartOne failed for BigData"=54667 PartOne BigData
 ⍤"AltPartOne failed for BigData"=54667 PartOne BigData
 ⍤"PartTwo failed for SmallData"=281 PartTwo SmallDataTwo
 ⍤"PartTwo failed for BigData"=54203 PartTwo BigData
