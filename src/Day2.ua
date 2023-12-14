@@ -7,18 +7,14 @@ SmallData ← $ Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
 
 ReadLines ← ⊜□≠,@\n
 Limit ← [12 13 14]
-Default ← {"0red" "0green" "0blue"}
 Digits ← ♭∵$"_"⇡10
-ToMatrix ← ∵(□▽≠@ .°□)☇1⬚@ ∵(⊜□¬∊:":;".°□) ↯ ⊂:[¯1] ⧻. ReadLines
-IDs ← ∵(⋕▽¬∊:"Game".°□)⊢⍉ ToMatrix
-StripDig ← ∵(□▽¬∊:Digits.°□)
-FillCell ← ⊂▽¬∊ StripDig Default StripDig :Default.
-FillCells ← ≡(≡(□ FillCell °□)°□)∵(□⊜□≠,@,°□) ⍉↘1⍉ ToMatrix
-SortCells ← ∵(□⊏⍖∵(□▽¬∊:Digits.°□).°□)
-ParseDigits ← ∵(∵(⋕▽∊:Digits.°□)°□)
+StripDig ← □▽¬∊:Digits.°□
+ParseDig ← ⋕▽∊:Digits.°□
+ToMatrix ← ∵(□▽≠@ .°□)⍉↘1⍉☇1⬚@0∵(⊜□¬∊:":;,".°□)↯⊂:[¯1]⧻.ReadLines
+MaxPerColor ← ≡(▽≠0.⊕(/↥≡ParseDig)≡(⊗:{"red" "green" "blue"} StripDig).)
 
-PartOne ← /+× IDs: ≡(/×/×≥0≡(-:Limit)) ParseDigits SortCells FillCells.
-PartTwo ← /+≡/×≡/↥ ParseDigits SortCells FillCells
+PartOne ← /+×⊃(+1⇡⧻|∘)≡(/×≤ Limit) MaxPerColor ToMatrix
+PartTwo ← /+≡/× MaxPerColor ToMatrix
 
 ---
 ⍤"PartOne failed for SmallData"=8 PartOne SmallData
