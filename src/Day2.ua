@@ -7,7 +7,7 @@ SmallData ← $ Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
 
 ReadLines ← ⊜□≠,@\n
 Limit ← [12 13 14]
-Digits ← ♭∵$"_"⇡10
+Digits ← +⇡10@0
 StripDig ← □▽¬∊:Digits.°□
 ParseDig ← ⋕▽∊:Digits.°□
 ToMatrix ← ∵(□▽≠@ .°□)⍉↘1⍉☇1⬚@0∵(⊜□¬∊:":;,".°□)↯⊂:[¯1]⧻.ReadLines
@@ -17,8 +17,8 @@ PartOne ← /+×⊃(+1⇡⧻|∘)≡(/×≤ Limit) MaxPerColor ToMatrix
 PartTwo ← /+≡/× MaxPerColor ToMatrix
 
 ---
-⍤"PartOne failed for SmallData"=8 PartOne SmallData
-⍤"PartOne failed for BigData"=2439 PartOne BigData
-⍤"PartTwo failed for SmallData"=2286 PartTwo SmallData
-⍤"PartTwo failed for BigData"=63711 PartTwo BigData
+⍤⊃⋅∘=8 PartOne SmallData
+⍤⊃⋅∘=2439 PartOne BigData
+⍤⊃⋅∘=2286 PartTwo SmallData
+⍤⊃⋅∘=63711 PartTwo BigData
 ---
