@@ -34,46 +34,25 @@ SmallData ← $ seeds: 79 14 55 13
             $ 56 93 4
 Digits ← +⇡10@0
 ReadLines ← ⬚@ ⊜∘≠,@\n
-ParseAlmanac ← (
-  ☇1⊜(□≡(⇌⊜⋕∊,+⇡10@0))≡/↥∊,+⇡10@0↘1.ReadLines
-  ⊜⋕∊,+⇡10@0♭↙1:
-)
-Lookup ← (
-  ⊃(≡/+↘0_¯1|♭↘0_¯1↘0_1|≡/+⍜(↘0_1|↘0_1))
-  ⊙(⧻.⊙▽▽,⊙↧:>0.)⊙⊙≤,-,⊙:⊙⊙:
-  (⊙(;;)|-∩⊢;):
-)
-
-PartOne ← /↧≡(∧(Lookup °□):) ParseAlmanac
-
-BinSearch ← ≡(/↥×≥0-:):☇1⊙::☇1+1⇡⧻.
-SplitRange ← ◫2⊏⍏.⊝⊂⊏+⊙⊢⇡/-.BinSearch ⊙:.⊙.
+BinSearch ← ≡(/↥×≥0-⊙:)⊓(⊃(☇1|☇1+1⇡⧻)|∘)
+SplitRange ← ◫2⊏⍏.⊝⊂⊏⊃(+⊃(⊢|⇡/-)BinSearch|∘⊙∘)
 ParseSeeds ← ⊜⋕∊,Digits ♭↙1
 ParseRangeMaps ← (
-  ⊜(□⊏⍏↘0_1.≡(⊜⋕∊,Digits))≡/↥∊,Digits
+  ⊜(□⊏⍏↘0_1.≡(⊜⋕∊,Digits))≡/↥∊,Digits↘1
   ∵(⊃(□/⊂≡\+↘0_1|□⊂0/⊂∵(⊂:0)≡/-≡⇌↘0_¯1)°□)
 )
-ProcessRange ← (
-  ⊐/⊂≡(□ SplitRange:)⊙(.☇1):⊙:∩°□
-  +⊏⊙:♭≡(BinSearch:)⊙:♭⍜⍉(↙1).
+ProcessRange ← +⊏⊙:♭≡BinSearch:⊙:♭⍜⍉(↙1).⊐/⊂≡(□ SplitRange),:⊙:☇1∩°□
+FindMinBound! ← (
+  ⊃(ParseRangeMaps|^1ParseSeeds)ReadLines
+  ⊢/↧∧ProcessRange
 )
 
-AltPartOne ← (
-  ⊃(↘1|∵(⊂:+1.) ParseSeeds)ReadLines
-  ParseRangeMaps
-  ⊢/↧∧ProcessRange
-)
-PartTwo ← (
-  ⊃(↘1|≡(⊂⊃(⊢|/+))↯⊂:[¯1]÷2⧻. ParseSeeds)ReadLines
-  ParseRangeMaps
-  ⊢/↧∧ProcessRange
-)
+PartOne ← FindMinBound!∵(⊂:+1.)
+PartTwo ← FindMinBound!(≡\+↯[¯1 2])
 
 ---
 ⍤⊃⋅∘=35 PartOne SmallData
 ⍤⊃⋅∘=177942185 PartOne BigData
-⍤⊃⋅∘=35 AltPartOne SmallData
-⍤⊃⋅∘=177942185 AltPartOne BigData
 ⍤⊃⋅∘=46 PartTwo SmallData
 ⍤⊃⋅∘=69841803 PartTwo BigData
 ---
