@@ -5,14 +5,13 @@ SmallData ← $ 32T3K 765
             $ KTJJT 220
             $ QQQJA 483
 CardRank ← "23456789TJQKA"
-CardRankTwo ← ⊂@J▽≠,@J CardRank
-TypeCriteria ← [1_1 2_1 2_2 3_1 3_2 4_1 5_0]
+JokerRank ← ⊂@J▽≠,@J CardRank
 ParseHands ← ⊜(⊃(°□⊢|⋕°□⊢⇌)⊜□≠,@ )≠,@\n
-HandType ← ⊗:TypeCriteria ⬚0↙2⊏⍖.⊕⧻⊛.
-FindTotal!! ← /+×+1⇡⧻.⊏⍏≡(/+×ⁿ:13⇡⧻.⊂⊃(⇌⊗:^0|^1)) ParseHands
+HandType ← /+×[10 1]⬚0↙2⊏⍖.⊕⧻⊛.
+FindTotal!! ← /+×+1⍏⍏≡(⊂⊃(^1|⊗:^0)) ParseHands
 
-PartOne ← FindTotal!!CardRank HandType
-PartTwo ← FindTotal!!CardRankTwo(/↥≡(HandType)(☇1;|⊝⍉⊞((⊙;|;)=@J.):)>0⧻.⊝▽≠,@J.)
+PartOne ← FindTotal!!HandType CardRank
+PartTwo ← FindTotal!!(/↥≡HandType ⍉⊞((⊙;|;)=@J.):⊝.)JokerRank
 
 ---
 ⍤⊃⋅∘=6440 PartOne SmallData
